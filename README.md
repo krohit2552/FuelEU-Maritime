@@ -10,12 +10,16 @@ A comprehensive React-based dashboard for monitoring and managing FuelEU Maritim
 - Set baseline routes for compliance comparison
 
 <img width="1755" height="816" alt="image" src="https://github.com/user-attachments/assets/59ca2fee-778e-4e37-a6ef-36845163d9a0" />
+
+
 ### 📈 Performance Comparison
 - Compare route performance against baseline and target values
 - Visualize GHG intensity data with interactive charts
-- Compliance status indicators with color-coded metrics
-
+- Compliance status indicators with color-coded metrics.
+  
 <img width="1765" height="806" alt="image" src="https://github.com/user-attachments/assets/6fe534b8-8b9b-4a0b-b0a1-dda7cdfcaa36" />
+
+
 ### 🏦 Banking Management
 - Track Compliance Balance (CB) before and after adjustments
 - Bank surplus compliance balances for future use
