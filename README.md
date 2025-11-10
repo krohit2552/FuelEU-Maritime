@@ -1,70 +1,156 @@
-# Getting Started with Create React App
+# FuelEU Maritime Compliance Dashboard
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A comprehensive React-based dashboard for monitoring and managing FuelEU Maritime compliance, featuring route analysis, performance comparison, banking management, and pooling capabilities.
 
-## Available Scripts
+## 🌟 Features
 
-In the project directory, you can run:
+### 📊 Routes Overview
+- View and filter shipping routes by vessel type, fuel type, and year
+- Monitor GHG intensity, fuel consumption, distance, and total emissions
+- Set baseline routes for compliance comparison
 
-### `npm start`
+### 📈 Performance Comparison
+- Compare route performance against baseline and target values
+- Visualize GHG intensity data with interactive charts
+- Compliance status indicators with color-coded metrics
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### 🏦 Banking Management
+- Track Compliance Balance (CB) before and after adjustments
+- Bank surplus compliance balances for future use
+- Apply banked balances to meet compliance requirements
+- Supports Article 20 - Compliance Balance Banking
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### 🤝 Pooling Management
+- Create compliance pools with multiple vessels
+- Visualize surplus and deficit positions
+- Calculate total pool compliance balance
+- Supports Article 21 - Compliance Balance Pooling
 
-### `npm test`
+<img width="1755" height="816" alt="image" src="https://github.com/user-attachments/assets/59ca2fee-778e-4e37-a6ef-36845163d9a0" />
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+## 🚀 Quick Start
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Prerequisites
+- Node.js (version 14 or higher)
+- npm or yarn
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Installation
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+1. **Create the project:**
+```bash
+npx create-react-app fueleu-Maritime
+cd fueleu-Maritime
+Install dependencies:
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+npm install recharts lucide-react
+Replace the default App.js:
+Copy the provided React code into src/App.js
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Start the development server:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+npm start
+Open your browser:
+Navigate to http://localhost:3000
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+🛠️ Alternative Setup Methods
+Using Vite (Faster Development)
+bash
+npm create vite@latest fueleu-Maritime -- --template react
+cd fueleu-Maritime
+npm install
+npm install recharts lucide-react
+npm run dev
+📁 Project Structure
+text
+fueleu-dashboard/
+├── public/
+│   ├── index.html
+│   └── favicon.ico
+├── src/
+│   ├── App.js          # Main application component
+│   ├── index.js        # Application entry point
+│   └── index.css       # Global styles
+├── package.json
+└── README.md
+🎯 Usage Guide
+Routes Tab
+Filter routes using the dropdown filters
 
-## Learn More
+Set baseline by clicking "Set Baseline" on any route
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+View metrics including GHG intensity, fuel consumption, and emissions
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Compare Tab
+Monitor compliance against the target of 89.3368 gCO₂e/MJ
 
-### Code Splitting
+Visualize data with interactive bar charts
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Color-coded indicators show performance vs baseline and target
 
-### Analyzing the Bundle Size
+Banking Tab
+View CB balance in the summary cards
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+Bank surplus when CB after is positive
 
-### Making a Progressive Web App
+Apply banked balances to meet compliance needs
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+Pooling Tab
+Select ships for pooling by checking the boxes
 
-### Advanced Configuration
+Monitor total CB in the summary section
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+Create pools with 2 or more ships having positive total CB
 
-### Deployment
+🔧 API Integration
+The current implementation uses mock API functions. To integrate with real backend services:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+Replace the api object methods with actual API calls
 
-### `npm run build` fails to minify
+Update endpoints in api.getRoutes(), api.setBaseline(), etc.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Add authentication headers if required
+
+📊 Data Model
+Route Object
+javascript
+{
+  routeId: string,
+  vesselType: 'Container' | 'BulkCarrier' | 'Tanker' | 'RoRo',
+  fuelType: 'HFO' | 'LNG' | 'MGO',
+  year: number,
+  ghgIntensity: number,      // gCO₂e/MJ
+  fuelConsumption: number,   // tons
+  distance: number,          // km
+  totalEmissions: number,    // tons
+  isBaseline: boolean
+}
+🐛 Troubleshooting
+Common Issues
+Dependencies not found:
+
+bash
+npm install
+Port already in use:
+
+bash
+npm start -- --port 3001
+Build errors:
+
+npm run build
+🔒 Compliance Features
+FuelEU Maritime Regulation Support
+Article 6: GHG intensity calculation
+
+Article 20: Compliance balance banking
+
+Article 21: Compliance balance pooling
+
+Note: This is a frontend demonstration application. For production use, integrate with proper backend services and implement comprehensive error handling.
+
+Name -Rohit Kumar
+mobile: 8651712231
+gmail:kumarrohit2551997@gmail.com
+github link: https://github.com/krohit2552/FuelEU-Maritime
+demo: https://claude.ai/public/artifacts/12c5c466-9fb3-4c60-a30e-43078d876615
